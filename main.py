@@ -1,0 +1,28 @@
+from fastapi import FastAPI
+from db import *
+from models import *
+import uvicorn
+
+db_provider = DBProvider()
+app = FastAPI()
+
+
+
+@app.post("/api/add_word")
+async def add_words(item: Word):
+    await db_provider.add_word(item)
+
+@app.post("/api/del_word")
+async def del_word(pointer: int):
+    await db_provider.del_word(pointer)
+
+@app.post("/api/edit_word")
+async def edit_word(item: Word, pointer: int):
+    await db_provider.edit_word(item, pointer)
+
+@app.get("/api/get_words")
+async def get_words():
+    return await db_provider.get_words()
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
