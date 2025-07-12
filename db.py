@@ -42,3 +42,25 @@ class DBProvider:
                               (*item.values(), pointer,))
         await db.commit()
         return {'Status': 'Ok', 'info': ''}
+
+    @connection
+    async def search_word(self, item: Word, db):
+        item = item.model_dump()
+        result_json = {}
+        if item['word'] == None:
+            cursor = await db.execute("SELECT * FROM words WHERE translate LIKE %?%",
+                             (*item.values(),))
+        elif item['translate'] == None:
+            cursor = await db.execute("SELECT * FROM words WHERE word LIKE %?%",
+                             (*item.values(),))
+        else:
+            cursor = await db.execute("SELECT * FROM words WHERE word LIKE %?% AND translate LIKE %?%",
+                             (*item.values(),))
+        async for row in cursor:
+            result_json[row[0]] = [
+                row[1],
+                row[2],
+                row[3],
+                row[4] if len(row) == 5 else ''
+            ]
+        return result_json
