@@ -30,4 +30,5 @@ async def get_words():
 
 
 if __name__ == "__main__":
+    # Код для проверки деплоя
     uvicorn.run(app, host="0.0.0.0", port=8000)
