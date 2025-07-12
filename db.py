@@ -48,14 +48,14 @@ class DBProvider:
         item = item.model_dump()
         result_json = {}
         if item['word'] == None:
-            cursor = await db.execute("SELECT * FROM words WHERE translate LIKE %?%",
-                             (*item.values(),))
+            cursor = await db.execute("SELECT * FROM words WHERE translate LIKE ?",
+                             (f"%{item["translate"]}%",))
         elif item['translate'] == None:
-            cursor = await db.execute("SELECT * FROM words WHERE word LIKE %?%",
-                             (*item.values(),))
+            cursor = await db.execute("SELECT * FROM words WHERE word LIKE ?",
+                             (f"%{item["word"]}%",))
         else:
-            cursor = await db.execute("SELECT * FROM words WHERE word LIKE %?% AND translate LIKE %?%",
-                             (*item.values(),))
+            cursor = await db.execute("SELECT * FROM words WHERE word LIKE ? AND translate LIKE ?",
+                             (f"%{item["word"]}%", f"%{item["translate"]}%"))
         async for row in cursor:
             result_json[row[0]] = [
                 row[1],
