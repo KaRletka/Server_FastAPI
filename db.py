@@ -64,3 +64,16 @@ class DBProvider:
                 row[4] if len(row) == 5 else ''
             ]
         return result_json
+
+    @connection
+    async def get_word(self, pointer: int, db): #IDE ругается, id зарезервированное слово
+        result_json = {}
+        cursor = await db.execute("SELECT * FROM words WHERE id=?", (pointer,))
+        async for row in cursor:
+            result_json[row[0]] = [
+                row[1],
+                row[2],
+                row[3],
+                row[4] if len(row) == 5 else ''
+            ]
+        return result_json

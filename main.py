@@ -28,7 +28,10 @@ async def get_words(item: SWord):
 async def get_words():
     return await db_provider.get_words()
 
+@app.get("/api/get_word")
+async def get_word(pointer: int):
+    return await db_provider.get_word(pointer)
+
 
 if __name__ == "__main__":
-    # Код для проверки деплоя
     uvicorn.run(app, host="0.0.0.0", port=8000)
