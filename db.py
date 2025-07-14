@@ -1,7 +1,7 @@
 import aiosqlite
 from models import *
 
-PATH_TO_DB = "/var/lib/server_fastapi/dictionary.sqlite"
+PATH_TO_DB = "var/lib/server_fastapi/dictionary.sqlite"
 
 class DBProvider:
     @staticmethod
