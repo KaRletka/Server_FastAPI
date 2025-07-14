@@ -1,11 +1,13 @@
 import aiosqlite
 from models import *
 
+PATH_TO_DB = "/var/lib/server_fastapi/dictionary.sqlite"
+
 class DBProvider:
     @staticmethod
     def connection(func):
         async def wrapper(*args, **kwargs):
-            async with aiosqlite.connect('dictionary.sqlite') as db:
+            async with aiosqlite.connect('PATH_TO_DB') as db:
                 return await func(*args, *kwargs, db=db)
         return wrapper
 
