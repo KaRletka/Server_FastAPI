@@ -24,7 +24,7 @@ class DBProvider:
 
     @connection
     async def get_words(self, db):
-        cursor = await db.execute("SELECT * FROM words")
+        cursor = await db.execute("SELECT * FROM words ORDER BY id DESC;")
         result_json = {}
         async for row in cursor:
             result_json[row[0]] = [

@@ -210,3 +210,4 @@ __marimo__/
 .venv/
 Tests.py
 script.py
+*.sqlite
