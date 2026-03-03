@@ -11,38 +11,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      # 1. Получаем код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      # 2. Настраиваем SSH для доступа на сервер
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Deploy to server
-      run: |
-        ssh -o StrictHostKeyChecking=no root@5.42.99.226 << EOF
-          # создаём папку проекта, если её нет
-          mkdir -p /opt/Server_FastAPI
-          cd /opt/Server_FastAPI
+      # 3. Деплой на сервер
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@5.42.99.226 << EOF
+            # Создаём папку проекта, если её нет
+            mkdir -p /opt/Server_FastAPI
+            cd /opt/Server_FastAPI
 
-          # если репозиторий ещё не клонирован — клонируем
-          if [ ! -d ".git" ]; then
-            git clone https://github.com/<твoй-репозиторий>.git .
-          else
-            git pull origin main
-          fi
+            # Устанавливаем необходимые пакеты (один раз)
+            sudo apt update
+            sudo apt install -y python3 python3-venv python3-pip git
 
-          # создаём виртуальное окружение, если его нет
-          if [ ! -d "venv" ]; then
-            python3 -m venv venv
-          fi
+            # Если репозиторий ещё не клонирован — клонируем, иначе обновляем
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/KaRletka/Server_FastAPI.git .
+            else
+              git pull origin main
+            fi
 
-          source venv/bin/activate
-          python3 -m pip install --upgrade pip
-          pip install -r requirements.txt
+            # Создаём виртуальное окружение, если его нет
+            if [ ! -d "venv" ]; then
+              python3 -m venv venv
+            fi
 
-          # перезапуск uvicorn
-          pkill -f uvicorn || true
-          nohup uvicorn main:app --host 0.0.0.0 --port 8000 > uvicorn.log 2>&1 &
-        EOF
+            # Активируем виртуальное окружение и ставим зависимости
+            source venv/bin/activate
+            python3 -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+            # Перезапуск uvicorn
+            pkill -f uvicorn || true
+            nohup uvicorn main:app --host 0.0.0.0 --port 8000 > uvicorn.log 2>&1 &
+          EOF
