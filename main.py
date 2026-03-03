@@ -16,22 +16,18 @@ async def add_words(item: Word):
 async def del_word(pointer: int):
     await db_provider.del_word(pointer)
 
-@app.post("/api/edit_word")
-async def edit_word(item: Word, pointer: int):
-    await db_provider.edit_word(item, pointer)
+@app.post("/api/update_word")
+async def update_word(item: BaseWord):
+    await db_provider.update_word(item)
 
-@app.post("/api/search_word")
-async def get_words(item: SWord):
+@app.get("/api/search_word")
+async def search_word(item: SWord):
     return await db_provider.search_word(item)
 
 @app.get("/api/get_words")
-async def get_words():
-    return await db_provider.get_words()
-
-@app.get("/api/get_word")
-async def get_word(pointer: int):
-    return await db_provider.get_word(pointer)
+async def get_words(page):
+    return await db_provider.get_words(page)
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)

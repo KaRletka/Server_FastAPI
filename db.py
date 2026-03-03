@@ -3,6 +3,7 @@ from models import *
 from pathlib import Path
 
 PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
+# PATH_TO_DB = Path("dictionary.sqlite")
 
 class DBProvider:
     @staticmethod
@@ -26,8 +27,8 @@ class DBProvider:
         return {'Status': 'Ok', 'info': ''}
 
     @connection
-    async def get_words(self, db):
-        cursor = await db.execute("SELECT * FROM words ORDER BY id DESC;")
+    async def get_words(self, page: int, db):
+        cursor = await db.execute("SELECT * FROM words ORDER BY id DESC LIMIT 15;")
         result_json = {}
         async for row in cursor:
             result_json[row[0]] = [
@@ -39,8 +40,9 @@ class DBProvider:
         return result_json
 
     @connection
-    async def edit_word(self, item: Word, pointer, db):
+    async def update_word(self, item: Word, db):
         item = item.model_dump()
+        pointer = item.pop(0)
         await db.execute("UPDATE words SET word=?, transcription=?, translate=?, addition=? WHERE id=?",
                               (*item.values(), pointer,))
         await db.commit()
@@ -59,19 +61,6 @@ class DBProvider:
         else:
             cursor = await db.execute("SELECT * FROM words WHERE word LIKE ? AND translate LIKE ?",
                              (f"%{item["word"]}%", f"%{item["translate"]}%"))
-        async for row in cursor:
-            result_json[row[0]] = [
-                row[1],
-                row[2],
-                row[3],
-                row[4] if len(row) == 5 else ''
-            ]
-        return result_json
-
-    @connection
-    async def get_word(self, pointer: int, db): #IDE ругается, id зарезервированное слово
-        result_json = {}
-        cursor = await db.execute("SELECT * FROM words WHERE id=?", (pointer,))
         async for row in cursor:
             result_json[row[0]] = [
                 row[1],

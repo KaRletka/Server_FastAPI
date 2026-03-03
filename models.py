@@ -8,6 +8,13 @@ class Word(BaseModel):
     translate: str
     add_info: str | None = None
 
+class BaseWord(BaseModel):
+    id: int
+    word: str
+    transcription: str
+    translate: str
+    add_info: str | None = None
+
 # Модель, используется для запросов с поиском слова, я передаю данные в формате json,
 # поэтому пришлось писать отдельную модель
 
