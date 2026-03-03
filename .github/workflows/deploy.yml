@@ -21,7 +21,7 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh -o StrictHostKeyChecking=no root@147.45.154.46 << 'EOF'
+        ssh -o StrictHostKeyChecking=no root@5.42.99.226 << 'EOF'
           cd /home/user/server/Server_FastAPI
           git pull origin main
           source venv/bin/activate
