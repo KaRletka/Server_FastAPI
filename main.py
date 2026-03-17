@@ -1,15 +1,46 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from db import *
 from models import *
 import uvicorn
+import logging
+import time
 
 db_provider = DBProvider()
 app = FastAPI()
 
+# PATH_TO_LOGFILE = "/var/lib/server_fastapi/dictionary.sqlite"
+PATH_TO_LOGFILE = "api.log"
+
+logger = logging.getLogger("api")
+logging.basicConfig(
+    filename=PATH_TO_LOGFILE,
+    level=logging.INFO,
+    filemode="w",
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start_time = time.time()
+
+    logger.info(f"Request: {request.method} {request.url}")
+
+    response = await call_next(request)
+
+    process_time = time.time() - start_time
+
+    logger.info(
+        f"Response: {request.method} {request.url} "
+        f"Status: {response.status_code} "
+        f"Time: {process_time:.3f}s"
+    )
+
+    return response
+
 
 
 @app.post("/api/add_word")
-async def add_words(item: Word):
+async def add_word(item: Word):
     await db_provider.add_word(item)
 
 @app.post("/api/del_word")
@@ -27,6 +58,10 @@ async def search_word(item: SWord):
 @app.get("/api/get_words")
 async def get_words(page):
     return await db_provider.get_words(page)
+
+# @app.post("/api/ai")
+# async def update_word(item: str):
+#     return await db_provider.update_word(item)
 
 
 if __name__ == "__main__":

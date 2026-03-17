@@ -6,18 +6,17 @@ class Word(BaseModel):
     word: str
     transcription: str
     translate: str
-    add_info: str | None = None
+    add_info: str
 
 class BaseWord(BaseModel):
     id: int
     word: str
     transcription: str
     translate: str
-    add_info: str | None = None
+    add_info: str
 
 # Модель, используется для запросов с поиском слова, я передаю данные в формате json,
 # поэтому пришлось писать отдельную модель
-
 class SWord(BaseModel): #Full name - Search_word
     word: str | None = None
     translate: str | None = None

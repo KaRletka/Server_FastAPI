@@ -1,11 +1,32 @@
 import aiosqlite
 from models import *
 from pathlib import Path
+import logging
+from functools import wraps
 
-PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
-# PATH_TO_DB = Path("dictionary.sqlite")
+# PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
+PATH_TO_DB = Path("dictionary.sqlite")
+logger = logging.getLogger("db")
+
+
+def log_db_operation(func):
+    @wraps(func)
+    async def wrapper(*args, **kwargs):
+        logger.info(f"{func.__name__} called with args={args[1:]}, kwargs={kwargs}")
+
+        try:
+            result = await func(*args, **kwargs)
+            logger.info(f"{func.__name__} success")
+            return result
+
+        except Exception:
+            logger.exception(f"{func.__name__} failed")
+            raise
+
+    return wrapper
 
 class DBProvider:
+
     @staticmethod
     def connection(func):
         async def wrapper(*args, **kwargs):
@@ -13,6 +34,7 @@ class DBProvider:
                 return await func(*args, *kwargs, db=db)
         return wrapper
 
+    @log_db_operation
     @connection
     async def add_word(self, item: Word, db):
         item = item.model_dump()
@@ -20,12 +42,14 @@ class DBProvider:
         await db.commit()
         return {'Status': 'Ok', 'info': ''}
 
+    @log_db_operation
     @connection
     async def del_word(self, pointer: int, db): #IDE ругается, id зарезервированное слово
         await db.execute("DELETE FROM words WHERE id=?", (pointer,))
         await db.commit()
         return {'Status': 'Ok', 'info': ''}
 
+    @log_db_operation
     @connection
     async def get_words(self, page: int, db):
         cursor = await db.execute("SELECT * FROM words ORDER BY id DESC LIMIT 15;")
@@ -39,6 +63,7 @@ class DBProvider:
             ]
         return result_json
 
+    @log_db_operation
     @connection
     async def update_word(self, item: Word, db):
         item = item.model_dump()
@@ -48,6 +73,7 @@ class DBProvider:
         await db.commit()
         return {'Status': 'Ok', 'info': ''}
 
+    @log_db_operation
     @connection
     async def search_word(self, item: Word, db):
         item = item.model_dump()
