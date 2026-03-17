@@ -4,8 +4,8 @@ from pathlib import Path
 import logging
 from functools import wraps
 
-# PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
-PATH_TO_DB = Path("dictionary.sqlite")
+PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
+# PATH_TO_DB = Path("dictionary.sqlite")
 logger = logging.getLogger("db")
 
 

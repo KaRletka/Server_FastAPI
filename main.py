@@ -8,8 +8,8 @@ import time
 db_provider = DBProvider()
 app = FastAPI()
 
-# PATH_TO_LOGFILE = "/var/lib/server_fastapi/dictionary.sqlite"
-PATH_TO_LOGFILE = "api.log"
+PATH_TO_LOGFILE = "/var/lib/server_fastapi/dictionary.sqlite"
+# PATH_TO_LOGFILE = "api.log"
 
 logger = logging.getLogger("api")
 logging.basicConfig(
