@@ -8,8 +8,7 @@ import time
 db_provider = DBProvider()
 app = FastAPI()
 
-# PATH_TO_LOGFILE = "/var/lib/server_fastapi/api.log"
-PATH_TO_LOGFILE = "api.log"
+PATH_TO_LOGFILE = "/var/lib/server_fastapi/api.log"
 
 logger = logging.getLogger("api")
 logging.basicConfig(
@@ -69,4 +68,5 @@ async def get_word(pointer: int):
 
 
 if __name__ == "__main__":
+    PATH_TO_LOGFILE = "api.log"
     uvicorn.run(app, host="127.0.0.1", port=8000)
