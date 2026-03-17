@@ -52,7 +52,7 @@ class DBProvider:
     @log_db_operation
     @connection
     async def get_words(self, page: int, db):
-        cursor = await db.execute("SELECT * FROM words ORDER BY id DESC LIMIT 15 OFFSET ?;", page-1)
+        cursor = await db.execute("SELECT * FROM words ORDER BY id DESC LIMIT 15 OFFSET ?;", (page-1,))
         result_json = {}
         async for row in cursor:
             result_json[row[0]] = [
