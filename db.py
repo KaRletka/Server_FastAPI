@@ -4,8 +4,8 @@ from pathlib import Path
 import logging
 from functools import wraps
 
-PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
-# PATH_TO_DB = Path("dictionary.sqlite")
+# PATH_TO_DB = Path("/var/lib/server_fastapi/dictionary.sqlite")
+PATH_TO_DB = Path("dictionary.sqlite")
 logger = logging.getLogger("db")
 
 
@@ -70,7 +70,7 @@ class DBProvider:
     @connection
     async def update_word(self, item: Word, db):
         item = item.model_dump()
-        pointer = item.pop(0)
+        pointer = item.pop("id")
         await db.execute("UPDATE words SET word=?, transcription=?, translate=?, addition=? WHERE id=?",
                               (*item.values(), pointer,))
         await db.commit()
