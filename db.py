@@ -78,6 +78,21 @@ class DBProvider:
 
     @log_db_operation
     @connection
+    async def get_word(self, pointer: int, db):
+        result_json = {}
+        cursor = await db.execute("SELECT * FROM words WHERE id=?",
+                         (pointer,))
+        async for row in cursor:
+            result_json[row[0]] = [
+                row[1],
+                row[2],
+                row[3],
+                row[4] if len(row) == 5 else ''
+            ]
+        return result_json
+
+    @log_db_operation
+    @connection
     async def search_word(self, item: Word, db):
         item = item.model_dump()
         result_json = {}
