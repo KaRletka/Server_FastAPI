@@ -59,7 +59,7 @@ async def search_word(item: SWord):
 async def get_words(page):
     return await db_provider.get_words(page)
 
-@app.get("/api/get_words")
+@app.get("/api/get_word")
 async def get_word(pointer: int):
     return await db_provider.get_word(pointer)
 
