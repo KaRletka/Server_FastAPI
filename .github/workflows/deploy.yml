@@ -11,46 +11,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Получаем код из репозитория
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Настраиваем SSH для доступа на сервер
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # 3. Деплой на сервер
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no root@5.42.99.226 << EOF
-            # Создаём папку проекта, если её нет
+          ssh -o StrictHostKeyChecking=no deploy@5.42.99.226 << 'EOF'
+            set -e
+
+            # Установка зависимостей только при первом деплое
+            if ! command -v python3 &>/dev/null; then
+              sudo apt update && sudo apt install -y python3 python3-venv python3-pip git
+            fi
+
             mkdir -p /opt/Server_FastAPI
             cd /opt/Server_FastAPI
 
-            # Устанавливаем необходимые пакеты (один раз)
-            sudo apt update
-            sudo apt install -y python3 python3-venv python3-pip git
-
-            # Если репозиторий ещё не клонирован — клонируем, иначе обновляем
             if [ ! -d ".git" ]; then
               git clone https://github.com/KaRletka/Server_FastAPI.git .
             else
               git pull origin main
             fi
 
-            # Создаём виртуальное окружение, если его нет
             if [ ! -d "venv" ]; then
               python3 -m venv venv
             fi
 
-            # Активируем виртуальное окружение и ставим зависимости
             source venv/bin/activate
-            python3 -m pip install --upgrade pip
-            pip install -r requirements.txt
+            pip install --quiet -r requirements.txt
 
-            # Перезапуск uvicorn
-            pkill -f uvicorn || true
-            nohup uvicorn main:app --host 0.0.0.0 --port 8000 > uvicorn.log 2>&1 &
+            # Создаём .env на сервере, если не существует
+            if [ ! -f ".env" ]; then
+              echo "DB_PATH=/var/lib/server_fastapi/dictionary.sqlite" > .env
+              echo "LOG_PATH=/var/lib/server_fastapi/api.log" >> .env
+              mkdir -p /var/lib/server_fastapi
+            fi
+
+            # Устанавливаем systemd-юнит
+            sudo cp fastapi.service /etc/systemd/system/fastapi.service
+            sudo systemctl daemon-reload
+            sudo systemctl enable fastapi
+            sudo systemctl restart fastapi
           EOF
