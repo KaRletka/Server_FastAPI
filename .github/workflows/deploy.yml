@@ -21,7 +21,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no deploy@72.56.38.217 << 'EOF'
+          ssh -o StrictHostKeyChecking=no root@72.56.38.217 << 'EOF'
             set -e
 
             # Установка зависимостей только при первом деплое
