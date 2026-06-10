@@ -126,6 +126,15 @@ class DBProvider:
 
     # --- Words ---
 
+    @connection
+    async def find_word_by_name(self, user_id: int, word: str, db):
+        """Возвращает (id, word, transcription, translate, addition) или None."""
+        cursor = await db.execute(
+            "SELECT * FROM words WHERE user_id=? AND word=?",
+            (user_id, word)
+        )
+        return await cursor.fetchone()
+
     @log_db_operation
     @connection
     async def add_word(self, user_id: int, item: Word, db):

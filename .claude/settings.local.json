@@ -1,7 +1,35 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\tests\")"
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\tests\")",
+      "Bash(pip install *)",
+      "Bash(python -m pytest tests/test_api.py -v)",
+      "Bash(python -c \"import httpx; print\\(httpx.__version__\\)\")",
+      "Read(//c/Users/murad/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/92e6f08c-a81f-42c3-961e-0e5d8ee17334/f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f/skills/docx/**)",
+      "Bash(python -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(extract-text \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\")",
+      "Bash(python -c \"import pypandoc; print\\(pypandoc.convert_file\\(r'C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx', 'markdown'\\)\\)\")",
+      "Bash(where pandoc *)",
+      "Bash(pandoc --version)",
+      "Bash(ls \"C:\\\\Virtual_D\\\\Projects\\\\Flutter_projects\" 2>&1 | head -20)",
+      "Bash(python build_chapters.py)",
+      "Bash(python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\pack.py\" \"diploma_unpacked\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная_v2.docx\" --original \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\")",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\pack.py\" \"diploma_unpacked\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная_v2.docx\" --original \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\" --validate false)",
+      "PowerShell(python --version)",
+      "PowerShell(pandoc --version 2>&1)",
+      "Bash(python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\unpack.py\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\" \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\diploma_check_unpacked\")",
+      "Bash(ls \"/c/Virtual_D/Projects/Flutter_projects/\" 2>&1)",
+      "Bash(python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\unpack.py\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\" \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\diploma_unpacked\")",
+      "Bash(python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\pack.py\" \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\diploma_unpacked\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_с_главами_2_3.docx\" --original \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\")",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\pack.py\" \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\diploma_unpacked\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_с_главами_2_3.docx\" --original \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\")",
+      "Bash(PYTHONIOENCODING=utf-8 python \"C:\\\\Users\\\\murad\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\92e6f08c-a81f-42c3-961e-0e5d8ee17334\\\\f6d7e4f0-dc14-4fd9-9a75-7b62e2aaf09f\\\\skills\\\\docx\\\\scripts\\\\office\\\\pack.py\" \"C:\\\\Virtual_D\\\\Projects\\\\FastAPITest\\\\diploma_unpacked\" \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_с_главами_2_3.docx\" --original \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\Clear\\\\ВКР_переработанная \\(1\\).docx\" --validate false)",
+      "Read(//c/Users/murad/OneDrive/Рабочий стол/Clear/**)",
+      "Bash(python -c ' *)",
+      "Bash(PYTHONIOENCODING=utf-8 python build_chapters.py)",
+      "Bash(python scripts/office/unpack.py \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\ВКР_Назаров_Мурад_Курбанович.docx\" diploma_unpacked/)",
+      "Bash(extract-text \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\ВКР_Назаров_Мурад_Курбанович.docx\")",
+      "Bash(pandoc \"C:\\\\Users\\\\murad\\\\OneDrive\\\\Рабочий стол\\\\ВКР_Назаров_Мурад_Курбанович.docx\" -t markdown)",
+      "PowerShell(pandoc \"C:\\\\Users\\\\murad\\\\OneDrive\\\\����稩 �⮫\\\\���_����஢_��ࠤ_��ࡠ�����.docx\" -t markdown 2>&1)"
     ]
   }
 }

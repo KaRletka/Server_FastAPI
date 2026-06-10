@@ -1,0 +1,67 @@
+{
+  "id": "da8a9e3f1ac4",
+  "name": "Second chat AAA",
+  "created_at": "2026-06-08T22:14:09.756338",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Add new words in my dict: Choose your own words.",
+      "ts": "2026-06-08T22:15:39.929732"
+    },
+    {
+      "role": "ai",
+      "text": "Слово \"choose\" успешно добавлено. Теперь ты можешь выбирать собственные слова более уверенно!\n\nЕсли хочешь, можем обсудить примеры использования этого слова в предложениях.",
+      "ts": "2026-06-08T22:15:39.929732"
+    },
+    {
+      "role": "user",
+      "text": "tell me anything",
+      "ts": "2026-06-08T22:22:47.964551"
+    },
+    {
+      "role": "ai",
+      "text": "Вот несколько интересных фактов о слове \"choose\":\n\n1. Оно происходит от староанглийского \"ciosan\", что означает \"брать, хватать\".\n2. У него есть синонимы, такие как select, pick, opt для более естественного звучания в разных контекстах.\n3. Его антонимы включают refuse, reject, decline, которые показывают отказ или отрицание выбора.\n\nМожешь попрактиковаться, используя это слово в предложениях. Например:\n- I choose to study English today. (Я выбираю изучать английский сегодня.)\n- She chose the red dress over the blue one. (Она выбрала красное платье вместо синего.)\n\nПопробуй придумать свои предложения!",
+      "ts": "2026-06-08T22:22:47.964551"
+    },
+    {
+      "role": "user",
+      "text": "English mode",
+      "ts": "2026-06-08T22:23:05.018915"
+    },
+    {
+      "role": "ai",
+      "text": "Get set! Are you ready to conquer some vocabulary today?\n\nLet's start with a few words related to choice and decision-making. \n\nCould you please tell me if you'd like to learn:\n- Synonyms of 'choose'\n- Antonyms of 'choose'\n- Examples of usage for 'choose' in different contexts?\n\nChoose whichever option suits you best! 😊",
+      "ts": "2026-06-08T22:23:05.018915"
+    },
+    {
+      "role": "user",
+      "text": "tell me anything",
+      "ts": "2026-06-08T22:23:40.919954"
+    },
+    {
+      "role": "ai",
+      "text": "Alright, let's dive into some interesting facts about language and choices!\n\nDid you know that the word \"choice\" comes from Old French via Middle English, originally meaning something selected or picked out? And did you also realize that when we talk about making decisions, our brain goes through a process called \"cognitive evaluation,\" where it assesses options before selecting one?\n\nHere are three quick examples using \"choose\":\n\n1. **I choose the red shirt because it's more stylish.**  \n2. **She chooses to study hard instead of watching TV.**  \n3. **You can choose any book from this shelf; there's no obligation to pick one.**\n\nWould you like to practice these phrases further or explore other aspects of choosing and decision-making? 😉",
+      "ts": "2026-06-08T22:23:40.919954"
+    },
+    {
+      "role": "user",
+      "text": "add new words from this text",
+      "ts": "2026-06-08T22:24:14.572200"
+    },
+    {
+      "role": "ai",
+      "text": "Here's what we'll add:\n\n### New Words From Text:\n1. **Cognitive**  \n   - Transcription: kɒg'nɪs ɪv\n   - Translate: познавательный, когнитивный\n   - Add Info: Related to mental processes involved in knowing, learning, and understanding.\n\n2. **Assessment**  \n   - Transcription: ə'sessmənt\n   - Translate: оценка, анализ\n   - Add Info: The act of forming an opinion or judgment by carefully considering information.\n\n3. **Option**  \n   - Transcription: 'pʌŋ(k) (ə)n\n   - Translate: вариант, опция\n   - Add Info: Something available for choice or selection.\n\nWould you like to practice using these words in sentences or explore more vocabulary? 📚",
+      "ts": "2026-06-08T22:24:14.572200"
+    },
+    {
+      "role": "user",
+      "text": "add this words in my dict",
+      "ts": "2026-06-08T22:25:09.900204"
+    },
+    {
+      "role": "ai",
+      "text": "Не удалось получить ответ.",
+      "ts": "2026-06-08T22:25:09.900204"
+    }
+  ]
+}

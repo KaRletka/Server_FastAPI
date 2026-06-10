@@ -20,3 +20,11 @@ class UserRegister(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+
+
+class MessageRequest(BaseModel):
+    text: str
+
+
+class DialogRename(BaseModel):
+    name: str

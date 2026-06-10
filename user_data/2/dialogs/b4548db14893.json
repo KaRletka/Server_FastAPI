@@ -1,0 +1,107 @@
+{
+  "id": "b4548db14893",
+  "created_at": "2026-05-28T11:58:17.662406",
+  "messages": [
+    {
+      "role": "user",
+      "text": "Test message 1",
+      "ts": "2026-05-28T11:58:26.241513"
+    },
+    {
+      "role": "ai",
+      "text": "Привет! Твоё сообщение понятно, но не очень полезно для наших целей. Давай лучше по делу. Чем я могу тебе помочь сегодня? Например, можешь попросить объяснить какое-то слово или фразу, добавить новое слово в словарь или что-то ещё.",
+      "ts": "2026-05-28T11:58:26.241513"
+    },
+    {
+      "role": "user",
+      "text": "INFO:     127.0.0.1:54751 - \"GET /api/dialogs/b4548db14893 HTTP/1.1\" 200 OKINFO:     127.0.0.1:64411 - \"POST /api/dialogs/b4548db14893/message HTTP/1.1\" 500 Internal Server ErrorERROR:    Exception in ASGI application  + Exception Group Traceback (most recent call last):  |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_utils.py\", line 76, in collapse_excgroups  |     yield  |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 177, in __call__  |     async with anyio.create_task_group() as task_group:  |                ~~~~~~~~~~~~~~~~~~~~~~~^^  |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\anyio\\_backends\\_asyncio.py\", line 772, in __aexit__  |     raise BaseExceptionGroup(  |         \"unhandled errors in a TaskGroup\", self._exceptions  |     ) from None  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)  +-+---------------- 1 ----------------    | Traceback (most recent call last):    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\httptools_impl.py\", line 409, in run_asgi    |     result = await app(  # type: ignore[func-returns-value]    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |         self.scope, self.receive, self.send    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |     )    |     ^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\proxy_headers.py\", line 60, in __call__    |     return await self.app(scope, receive, send)    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\applications.py\", line 1054, in __call__    |     await super().__call__(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\applications.py\", line 112, in __call__    |     await self.middleware_stack(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\errors.py\", line 187, in __call__    |     raise exc    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\errors.py\", line 165, in __call__    |     await self.app(scope, receive, _send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 176, in __call__    |     with recv_stream, send_stream, collapse_excgroups():    |                                    ~~~~~~~~~~~~~~~~~~^^    |   File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\contextlib.py\", line 162, in __exit__    |     self.gen.throw(value)    |     ~~~~~~~~~~~~~~^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_utils.py\", line 82, in collapse_excgroups    |     raise exc    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 178, in __call__    |     response = await self.dispatch_func(request, call_next)    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\main.py\", line 53, in log_requests    |     response = await call_next(request)    |                ^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 156, in call_next    |     raise app_exc    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 141, in coro    |     await self.app(scope, receive_or_disconnect, send_no_error)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\exceptions.py\", line 62, in __call__    |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 53, in wrapped_app    |     raise exc    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 42, in wrapped_app    |     await app(scope, receive, sender)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 714, in __call__    |     await self.middleware_stack(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 734, in app    |     await route.handle(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 288, in handle    |     await self.app(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 76, in app    |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 53, in wrapped_app    |     raise exc    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 42, in wrapped_app    |     await app(scope, receive, sender)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 73, in app    |     response = await f(request)    |                ^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\routing.py\", line 301, in app    |     raw_response = await run_endpoint_function(    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |     ...<3 lines>...    |     )    |     ^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\routing.py\", line 212, in run_endpoint_function    |     return await dependant.call(**values)    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\main.py\", line 212, in send_message    |     answer = await ask_gigachat(request.text, history, profile, tool_executor)    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\ai_service.py\", line 177, in ask_gigachat    |     return await loop.run_in_executor(None, _sync_call)    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    |   File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\concurrent\\futures\\thread.py\", line 59, in run    |     result = self.fn(*self.args, **self.kwargs)    |   File \"C:\\Virtual_D\\Projects\\FastAPITest\\ai_service.py\", line 152, in _sync_call    |     fn_args = json.loads(fn_call.arguments)    |   File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\__init__.py\", line 339, in loads    |     raise TypeError(f'the JSON object must be str, bytes or bytearray, '    |                     f'not {s.__class__.__name__}')    | TypeError: the JSON object must be str, bytes or bytearray, not dict    +------------------------------------During handling of the above exception, another exception occurred:Traceback (most recent call last):  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\uvicorn\\protocols\\http\\httptools_impl.py\", line 409, in run_asgi    result = await app(  # type: ignore[func-returns-value]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        self.scope, self.receive, self.send        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    )    ^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\uvicorn\\middleware\\proxy_headers.py\", line 60, in __call__    return await self.app(scope, receive, send)           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\applications.py\", line 1054, in __call__    await super().__call__(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\applications.py\", line 112, in __call__    await self.middleware_stack(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\errors.py\", line 187, in __call__    raise exc  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\errors.py\", line 165, in __call__    await self.app(scope, receive, _send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 176, in __call__    with recv_stream, send_stream, collapse_excgroups():                                   ~~~~~~~~~~~~~~~~~~^^  File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\contextlib.py\", line 162, in __exit__    self.gen.throw(value)    ~~~~~~~~~~~~~~^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_utils.py\", line 82, in collapse_excgroups    raise exc  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 178, in __call__    response = await self.dispatch_func(request, call_next)               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\main.py\", line 53, in log_requests    response = await call_next(request)               ^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 156, in call_next    raise app_exc  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\base.py\", line 141, in coro    await self.app(scope, receive_or_disconnect, send_no_error)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\middleware\\exceptions.py\", line 62, in __call__    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 53, in wrapped_app    raise exc  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 42, in wrapped_app    await app(scope, receive, sender)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 714, in __call__    await self.middleware_stack(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 734, in app    await route.handle(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 288, in handle    await self.app(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 76, in app    await wrap_app_handling_exceptions(app, request)(scope, receive, send)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 53, in wrapped_app    raise exc  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\_exception_handler.py\", line 42, in wrapped_app    await app(scope, receive, sender)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\starlette\\routing.py\", line 73, in app    response = await f(request)               ^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\routing.py\", line 301, in app    raw_response = await run_endpoint_function(                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^    ...<3 lines>...    )    ^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\.venv\\Lib\\site-packages\\fastapi\\routing.py\", line 212, in run_endpoint_function    return await dependant.call(**values)           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\main.py\", line 212, in send_message    answer = await ask_gigachat(request.text, history, profile, tool_executor)             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Virtual_D\\Projects\\FastAPITest\\ai_service.py\", line 177, in ask_gigachat    return await loop.run_in_executor(None, _sync_call)           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\concurrent\\futures\\thread.py\", line 59, in run    result = self.fn(*self.args, **self.kwargs)  File \"C:\\Virtual_D\\Projects\\FastAPITest\\ai_service.py\", line 152, in _sync_call    fn_args = json.loads(fn_call.arguments)  File \"C:\\Users\\murad\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\json\\__init__.py\", line 339, in loads    raise TypeError(f'the JSON object must be str, bytes or bytearray, '                    f'not {s.__class__.__name__}')TypeError: the JSON object must be str, bytes or bytearray, not dict",
+      "ts": "2026-05-28T12:27:31.795605"
+    },
+    {
+      "role": "ai",
+      "text": "Похоже, у тебя возникла проблема с отправкой сообщения через API. Из логов видно несколько ключевых моментов:\n\n1. Ошибка возникает при попытке преобразовать объект типа `dict` в строку формата JSON с помощью функции `json.loads`.\n2. Сообщение об ошибке говорит, что ожидался строка, байты или массив байтов (`str`, `bytes` или `bytearray`), а не словарь (`dict`).\n\n### Возможные причины ошибки:\n- Возможно, параметр `fn_call.arguments` содержит данные, которые должны быть сериализованы в JSON, но передаются как словарь вместо строки.\n- Проверь, как именно формируются аргументы для вызова функции `_sync_call`. Убедись, что они правильно преобразуются в формат JSON.\n\n### Рекомендации:\n1. Убедись, что аргумент `fn_call.arguments` является строкой или объектом, который можно безопасно преобразовать в JSON.\n2. Если аргумент действительно должен быть словарем, возможно, его нужно сначала преобразовать в строку с помощью метода `.dumps()` из библиотеки `json`.\n\nПример исправления:\n```python\nimport json\n\n# Вместо этого:\nfn_args = json.loads(fn_call.arguments)\n\n# Попробуй так:\nfn_args = json.loads(json.dumps(fn_call.arguments))\n```\n\nЕсли проблема сохраняется после этих изменений, уточни, как именно формируется значение `fn_call.arguments`, чтобы я мог предложить более точное решение.",
+      "ts": "2026-05-28T12:27:31.795605"
+    },
+    {
+      "role": "user",
+      "text": "Pick me a text from a couple of sentences.",
+      "ts": "2026-05-28T12:27:42.364712"
+    },
+    {
+      "role": "ai",
+      "text": "Вот пара предложений, выберу второе:\n\n1. \"I like to play soccer with my friends.\"\n2. \"My favorite color is blue.\"\n\nВыбрано предложение: **\"My favorite color is blue.\"**\n\nТеперь давай разберем его по частям:\n- My – притяжательное местоимение, означает «мой».\n- favorite – прилагательное, означающее «любимый», «предпочитаемый».\n- color – существительное, означает «цвет».\n- is – глагол-связка, показывает, что речь идет о состоянии или принадлежности («является»).\n- blue – прилагательное, обозначает цвет «синий».\n\nПопробуй повторить это предложение вслух несколько раз, чтобы запомнить структуру и произношение.",
+      "ts": "2026-05-28T12:27:42.364712"
+    },
+    {
+      "role": "user",
+      "text": "Pick me a text from a couple of sentences.",
+      "ts": "2026-05-28T12:30:01.645918"
+    },
+    {
+      "role": "ai",
+      "text": "Вот два предложения:\n\n1. Yesterday I played soccer with my friends.\n2. Today I want to go shopping.\n\nВыбираю второе: **Today I want to go shopping.**\n\nРазберем его:\n\n**Today** — today [ˈtəʊ.dɪ] — сегодня  \n**I** — I [aɪ] — я  \n**want** — want [wɒnt] — хочу  \n**to** — предлог to [tuː] — к, в, для  \n**go** — go [gəʊ] — идти  \n**shopping** — shopping ['ʃpə.tɪŋ] — шопинг, покупки\n\nПопробуй прочитать это предложение вслух несколько раз, обращая внимание на произношение каждого слова.",
+      "ts": "2026-05-28T12:30:01.645918"
+    },
+    {
+      "role": "user",
+      "text": "add word today to my dict",
+      "ts": "2026-05-28T12:34:14.802424"
+    },
+    {
+      "role": "ai",
+      "text": "Слово «today» успешно добавлено в твой словарь. Теперь ты сможешь быстрее вспоминать и использовать его в разговоре!",
+      "ts": "2026-05-28T12:34:14.802424"
+    },
+    {
+      "role": "user",
+      "text": "add east to my dict",
+      "ts": "2026-05-28T12:41:51.727748"
+    },
+    {
+      "role": "ai",
+      "text": "Слово «east» добавлено в твой словарь. Теперь ты будешь легче его вспоминать и использовать в разговорах!",
+      "ts": "2026-05-28T12:41:51.727748"
+    },
+    {
+      "role": "user",
+      "text": "What words are in the dictionary?",
+      "ts": "2026-05-28T12:46:05.254273"
+    },
+    {
+      "role": "ai",
+      "text": "Сейчас в твоём словаре следующие слова:\n\n1265: east — восток, восточный\n1264: today — сегодня\n1263: soccer — футбол\n1262: test_word_new_user — fdfdsfdfs (это тестовое слово, добавленное ранее)\n\nЕсли хочешь, можем добавить еще какие-нибудь слова или обновить существующие.",
+      "ts": "2026-05-28T12:46:05.254273"
+    },
+    {
+      "role": "user",
+      "text": "Make sentence with this words",
+      "ts": "2026-05-28T12:46:52.305651"
+    },
+    {
+      "role": "ai",
+      "text": "Вот предложение с использованием слов \"east\" и \"today\":\n\n**Today we went to the east side of the city.**  \nСегодня мы отправились на восточную сторону города.\n\nПопробуй повторить это предложение вслух несколько раз, чтобы лучше запомнить использование этих слов вместе.",
+      "ts": "2026-05-28T12:46:52.305651"
+    },
+    {
+      "role": "user",
+      "text": "add in the word east add info",
+      "ts": "2026-05-28T12:49:26.554183"
+    },
+    {
+      "role": "ai",
+      "text": "Слово \"east\" теперь включает дополнительную информацию:\n\n> Также может использоваться в выражении \"go east\" — идти на восток. Пример: \"We decided to go east to explore new places.\" — \"Мы решили пойти на восток, чтобы исследовать новые места.\"\n\nПродолжаем пополнять твой словарный запас!",
+      "ts": "2026-05-28T12:49:26.554183"
+    },
+    {
+      "role": "user",
+      "text": "Clear add info from word east",
+      "ts": "2026-05-28T12:50:05.552031"
+    },
+    {
+      "role": "ai",
+      "text": "Готово! Слово \"east\" снова в твоей коллекции без дополнительной информации. Если захочешь добавить что-то ещё — просто скажи!",
+      "ts": "2026-05-28T12:50:05.552031"
+    }
+  ],
+  "name": "Test"
+}

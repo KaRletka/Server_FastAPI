@@ -122,3 +122,64 @@ def test_delete_word(auth_headers, word_id):
     resp = client.delete(f"/api/words/{word_id}", headers=auth_headers)
     assert resp.status_code == 200
     assert resp.json()["status"] == "ok"
+
+
+# --- Dialogs tests ---
+
+@pytest.fixture(scope="module")
+def dialog_id(auth_headers):
+    resp = client.post("/api/dialogs", headers=auth_headers)
+    assert resp.status_code == 201
+    return resp.json()["id"]
+
+
+def test_create_dialog(auth_headers):
+    resp = client.post("/api/dialogs", headers=auth_headers)
+    assert resp.status_code == 201
+    assert "id" in resp.json()
+
+
+def test_list_dialogs(auth_headers, dialog_id):
+    resp = client.get("/api/dialogs", headers=auth_headers)
+    assert resp.status_code == 200
+    ids = [d["id"] for d in resp.json()]
+    assert dialog_id in ids
+
+
+def test_get_dialog(auth_headers, dialog_id):
+    resp = client.get(f"/api/dialogs/{dialog_id}", headers=auth_headers)
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["id"] == dialog_id
+    assert "messages" in data
+
+
+def test_get_dialog_not_found(auth_headers):
+    resp = client.get("/api/dialogs/nonexistent", headers=auth_headers)
+    assert resp.status_code == 404
+
+
+def test_delete_dialog(auth_headers):
+    resp = client.post("/api/dialogs", headers=auth_headers)
+    tmp_id = resp.json()["id"]
+    resp = client.delete(f"/api/dialogs/{tmp_id}", headers=auth_headers)
+    assert resp.status_code == 200
+    assert resp.json()["status"] == "ok"
+
+
+def test_delete_dialog_not_found(auth_headers):
+    resp = client.delete("/api/dialogs/nonexistent", headers=auth_headers)
+    assert resp.status_code == 404
+
+
+def test_rename_dialog(auth_headers, dialog_id):
+    resp = client.patch(f"/api/dialogs/{dialog_id}", json={"name": "Мой диалог"}, headers=auth_headers)
+    assert resp.status_code == 200
+    assert resp.json()["status"] == "ok"
+    resp = client.get(f"/api/dialogs/{dialog_id}", headers=auth_headers)
+    assert resp.json()["name"] == "Мой диалог"
+
+
+def test_rename_dialog_not_found(auth_headers):
+    resp = client.patch("/api/dialogs/nonexistent", json={"name": "X"}, headers=auth_headers)
+    assert resp.status_code == 404
